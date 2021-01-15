@@ -5,7 +5,7 @@ dotenv.config()
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    title: 'TODO',
+    title: '<%= projectName %>',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -31,11 +31,27 @@ export default {
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
-    // https://github.com/SparingSoftware/nuxt-sparing-center
-    '@sparing-software/nuxt-sparing-center',
-
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
+
+    // https://github.com/SparingSoftware/nuxt-sparing-center
+    [
+      '@sparing-software/nuxt-sparing-center',
+      {
+        plugins: [<%= nuxtSparingCenter.plugins.map(plugin => `'${plugin}'`).join(', ') %>],
+        serviceModule: true,
+        baseImport: false,
+        trailingSlash: <%= nuxtSparingCenter.trailingSlash %>,
+        axiosI18nHeader: <%= nuxtSparingCenter.axiosI18nHeader %>,
+        axiosGenerateCache: <%= nuxtSparingCenter.axiosGenerateCache %>,
+        axiosRenameKeys: <%= nuxtSparingCenter.axiosRenameKeys %>,
+        styleResources: true,
+        sassUtilsCollection: <%= nuxtSparingCenter.sassUtilsCollection %>,
+        boxSizing: true,
+        fixBrowserStyles: <%= nuxtSparingCenter.fixBrowserStyles %>,
+        fixFontSmoothing: true
+      }
+    ],
 
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios'
@@ -45,5 +61,13 @@ export default {
   axios: {},
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
-  build: {}
+  build: {},
+
+  render: {
+    http2: true
+  },
+
+  env: {
+    API_URL: process.env.API_URL
+  }
 }

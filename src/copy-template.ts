@@ -1,15 +1,15 @@
-import * as fs from 'fs'
 import * as path from 'path'
+import * as fs from 'fs'
 import * as ejs from 'ejs'
-import chalk from 'chalk'
+import { EjsConfig } from './projects/ejsConfig'
 
 const SKIP_FILES = ['node_modules', '.template.json']
 const CURR_DIR = process.cwd()
 
-function copyTemplateRecursivly(
+export default function copyTemplateRecursivly(
   templatePath: string,
   projectName: string,
-  ejsConfig: any // todo
+  ejsConfig: EjsConfig
 ) {
   const filesToCreate = fs.readdirSync(templatePath)
 
@@ -37,30 +37,4 @@ function copyTemplateRecursivly(
       )
     }
   })
-}
-
-export default function createProject({
-  projectName,
-  templateName,
-  ejsConfig
-}: {
-  projectName: string
-  templateName: string
-  ejsConfig: any // todo
-}) {
-  const projectPath = path.join(__dirname, '../', projectName)
-  const templatePath = path.join(__dirname, '../', 'templates', templateName)
-
-  if (fs.existsSync(projectPath)) {
-    console.log(
-      chalk.red(`Folder ${projectPath} exists. Delete or use another name.`)
-    )
-    return false
-  }
-
-  fs.mkdirSync(projectPath)
-
-  copyTemplateRecursivly(templatePath, projectName, ejsConfig)
-
-  return true
 }

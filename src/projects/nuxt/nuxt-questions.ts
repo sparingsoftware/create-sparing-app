@@ -11,7 +11,20 @@ const questions: DistinctQuestion[] = [
     name: 'fixBrowserStyles',
     type: 'list',
     message: 'Overwrite user agent styles:',
-    choices: ['reset.css', 'normalize.css', { name: 'none', value: false }]
+    choices: [
+      {
+        name: 'reset.css',
+        value: 'reset'
+      },
+      {
+        name: 'normalize.css',
+        value: 'normalize'
+      },
+      {
+        name: 'none',
+        value: false
+      }
+    ]
   },
   {
     name: 'sassUtilsCollection',
@@ -24,6 +37,12 @@ const questions: DistinctQuestion[] = [
     type: 'checkbox',
     message: 'Add sparing plugins:',
     choices: ['vue-on-resize', 'v-clamp', '100vh']
+  },
+  {
+    name: 'axiosRenameKeys',
+    type: 'confirm',
+    message: 'Transform snake_case keys in axios req/res',
+    default: true
   },
   {
     name: 'axiosI18nHeader',
