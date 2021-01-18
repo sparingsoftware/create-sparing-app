@@ -1,4 +1,5 @@
 import { DistinctQuestion } from 'inquirer'
+import { ProjectTemplateName } from './projects/ejsConfig'
 
 const mainQuestions: DistinctQuestion[] = [
   {
@@ -6,8 +7,15 @@ const mainQuestions: DistinctQuestion[] = [
     type: 'list',
     message: 'What kind of app do You need?',
     choices: [
-      { name: 'Nuxt app (nuxt-sparing-center)', value: 'nuxt' },
-      { name: 'Static site (gulp)', value: 'static' }
+      {
+        name: 'Nuxt app (nuxt-sparing-center)',
+        value: ProjectTemplateName.Nuxt
+      },
+      {
+        name: 'Static site (WIP)',
+        value: 'static'
+      }
+      // TODO webpack 5? gulp?
     ]
   },
   {

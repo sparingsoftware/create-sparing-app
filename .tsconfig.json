@@ -2,10 +2,9 @@
   "compilerOptions": {
     "rootDir": "src",
     "outDir": "dist",
-    "target": "es6",
-    "lib": ["es6", "dom"],
-    "sourceMap": true,
-    "allowJs": true,
+    "target": "ES2019",
+    "sourceMap": false,
+    "allowJs": false,
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
@@ -14,7 +13,8 @@
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "module": "CommonJS"
   },
   "exclude": ["node_modules", "dist", "templates"]
 }

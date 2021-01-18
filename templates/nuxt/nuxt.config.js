@@ -1,4 +1,4 @@
-import dotenv from 'dontenv'
+import dotenv from 'dotenv'
 
 dotenv.config()
 
@@ -15,7 +15,7 @@ export default {
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: ['~/assets/sass/main.scss'],
+  css: ['~/assets/scss/main.scss'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [],
@@ -25,8 +25,13 @@ export default {
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
+<% if (programmingLanguage === 'TypeScript') { _%>
+     // https://go.nuxtjs.dev/typescript
+    '@nuxt/typescript-build',
+<% } else if (programmingLanguage === 'JavaScript') { _%>
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module'
+<% } _%>
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -38,17 +43,17 @@ export default {
     [
       '@sparing-software/nuxt-sparing-center',
       {
-        plugins: [<%= nuxtSparingCenter.plugins.map(plugin => `'${plugin}'`).join(', ') %>],
+        plugins: [<%- nuxtSparingCenter.plugins.map(plugin => `'${plugin}'`).join(', ') %>],
         serviceModule: true,
         baseImport: false,
-        trailingSlash: <%= nuxtSparingCenter.trailingSlash %>,
+        trailingSlash: false,
         axiosI18nHeader: <%= nuxtSparingCenter.axiosI18nHeader %>,
         axiosGenerateCache: <%= nuxtSparingCenter.axiosGenerateCache %>,
         axiosRenameKeys: <%= nuxtSparingCenter.axiosRenameKeys %>,
         styleResources: true,
         sassUtilsCollection: <%= nuxtSparingCenter.sassUtilsCollection %>,
         boxSizing: true,
-        fixBrowserStyles: <%= nuxtSparingCenter.fixBrowserStyles %>,
+        fixBrowserStyles: '<%= nuxtSparingCenter.fixBrowserStyles %>',
         fixFontSmoothing: true
       }
     ],
@@ -60,14 +65,26 @@ export default {
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {},
 
-  // Build Configuration (https://go.nuxtjs.dev/config-build)
-  build: {},
-
-  render: {
-    http2: true
+  // https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-runtime-config
+  publicRuntimeConfig: {
+    axios: {
+      browserBaseURL: process.env.BROWSER_BASE_URL || process.env.BASE_URL
+    }
   },
 
-  env: {
-    API_URL: process.env.API_URL
+  privateRuntimeConfig: {
+    axios: {
+      baseURL: process.env.BASE_URL
+    }
+  },
+
+  // Build Configuration (https://go.nuxtjs.dev/config-build)
+
+<% if (programmingLanguage === 'TypeScript') { _%>
+  build: {
+    transpile: ['vuex-module-decorators']
   }
+<% } else if (programmingLanguage === 'JavaScript') { _%>
+  build: {}
+<% } _%>
 }

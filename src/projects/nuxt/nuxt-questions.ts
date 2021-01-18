@@ -2,10 +2,14 @@ import { DistinctQuestion } from 'inquirer'
 
 const questions: DistinctQuestion[] = [
   {
-    name: 'trailingSlash',
-    type: 'confirm',
-    message: 'Use trailing slash in urls?',
-    default: false
+    name: 'programmingLanguage',
+    type: 'list',
+    message: 'Programming language:',
+    choices: [
+      'JavaScript',
+      'TypeScript (WIP)'
+      // TODO copy tsconfig instead of jsconfig, create store.ts instead of js
+    ]
   },
   {
     name: 'fixBrowserStyles',
@@ -19,10 +23,6 @@ const questions: DistinctQuestion[] = [
       {
         name: 'normalize.css',
         value: 'normalize'
-      },
-      {
-        name: 'none',
-        value: false
       }
     ]
   },
@@ -57,6 +57,7 @@ const questions: DistinctQuestion[] = [
       '(nuxt generate) Use axios 10 minutes cache to prevent HTTP flood?',
     default: false
   }
+  // TODO Add form-builder
 ]
 
 export default questions

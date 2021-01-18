@@ -4,7 +4,6 @@ import * as ejs from 'ejs'
 import { EjsConfig } from './projects/ejsConfig'
 
 const SKIP_FILES = ['node_modules', '.template.json']
-const CURR_DIR = process.cwd()
 
 export default function copyTemplateRecursivly(
   templatePath: string,
@@ -24,11 +23,11 @@ export default function copyTemplateRecursivly(
         fs.readFileSync(origFilePath, 'utf8'),
         ejsConfig
       )
-      const writePath = path.join(CURR_DIR, projectName, file)
+      const writePath = path.join(process.cwd(), projectName, file)
 
       fs.writeFileSync(writePath, contents, 'utf8')
     } else if (stats.isDirectory()) {
-      fs.mkdirSync(path.join(CURR_DIR, projectName, file))
+      fs.mkdirSync(path.join(process.cwd(), projectName, file))
 
       copyTemplateRecursivly(
         path.join(templatePath, file),

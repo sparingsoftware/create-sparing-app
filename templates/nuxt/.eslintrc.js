@@ -8,7 +8,11 @@ module.exports = {
     parser: 'babel-eslint'
   },
   extends: [
+<% if (programmingLanguage === 'TypeScript') { _%>
+    '@nuxtjs/eslint-config-typescript',
+<% } else if (programmingLanguage === 'JavaScript') { _%>
     '@nuxtjs',
+<% } _%>
     'prettier',
     'prettier/vue',
     'plugin:prettier/recommended',

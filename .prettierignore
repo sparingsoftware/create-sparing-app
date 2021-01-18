@@ -1,2 +1,7 @@
+# general
 node_modules
 dist
+
+# nuxt
+templates/nuxt/package.json
+templates/nuxt/nuxt.config.js

@@ -2,17 +2,32 @@
   "name": "<%= projectName %>",
   "version": "1.0.0",
   "private": true,
-  "main": "dist/index.js",
   "scripts": {
+<% if (programmingLanguage === 'TypeScript') { _%>
+    "dev": "nuxt-ts",
+    "build": "nuxt-ts build",
+    "start": "nuxt-ts start",
+    "generate": "nuxt-ts generate",
+<% } else if (programmingLanguage === 'JavaScript') { _%>
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
+<% } _%>
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "lint": "npm run lint:js"
+    "lint": "npm run lint:js",
+    "test": "jest"
   },
   "author": "Panowie Programiści",
   "devDependencies": {
+<% if (programmingLanguage === 'TypeScript') { _%>
+    "@nuxt/types": "^2.14.6",
+    "@nuxt/typescript-build": "^2.0.3",
+    "@nuxtjs/eslint-config-typescript": "^3.0.0",
+    "ts-jest": "^26.4.1",
+    "@nuxtjs/eslint-module": "^2.0.0",
+    "vuex-module-decorators": "^1.0.1"
+<% } _%>
     "sass-loader": "^8.0.2",
     "node-sass": "^4.13.1",
     "@nuxtjs/eslint-config": "^3.1.0",
@@ -22,9 +37,16 @@
     "eslint-config-prettier": "^6.12.0",
     "eslint-plugin-nuxt": "^1.0.0",
     "eslint-plugin-prettier": "^3.1.4",
-    "prettier": "^2.1.2"
+    "prettier": "^2.1.2",
+    "jest": "^26.5.0",
+    "vue-jest": "^3.0.4",
+    "babel-jest": "^26.5.0",
+    "@vue/test-utils": "^1.1.0"
   },
   "dependencies": {
+<% if (programmingLanguage === 'TypeScript') { _%>
+    "@nuxt/typescript-runtime": "^2.0.0",
+<% } _%>
     "@nuxtjs/axios": "^5.9.5",
     "@nuxtjs/dotenv": "^1.4.1",
     "@nuxtjs/google-gtag": "^1.0.4",

@@ -1,8 +1,8 @@
 type FixBrowserStyles = 'reset' | 'normalize' | false
 type SparingPlugin = 'vue-on-resize' | 'v-clamp' | '100vh'
+type Programminglanguage = 'JavaScript' | 'Typescript'
 
 interface NuxtSparingCenterConfig {
-  trailingSlash: boolean
   fixBrowserStyles: FixBrowserStyles
   sassUtilsCollection: boolean
   plugins: SparingPlugin[]
@@ -13,5 +13,6 @@ interface NuxtSparingCenterConfig {
 
 export interface NuxtEjsConfig {
   projectName: string
+  programmingLanguage: Programminglanguage
   nuxtSparingCenter: NuxtSparingCenterConfig
 }
