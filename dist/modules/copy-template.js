@@ -19,26 +19,24 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const path = __importStar(require("path"));
 const fs = __importStar(require("fs"));
 const ejs = __importStar(require("ejs"));
-const SKIP_FILES = ['node_modules', '.template.json'];
-function copyTemplateRecursivly(templatePath, projectName, ejsConfig) {
+const path = __importStar(require("path"));
+function copyTemplate(templatePath, projectPath, ejsConfig) {
     const filesToCreate = fs.readdirSync(templatePath);
     filesToCreate.forEach(file => {
         const origFilePath = path.join(templatePath, file);
         const stats = fs.statSync(origFilePath);
-        if (SKIP_FILES.includes(file))
-            return;
         if (stats.isFile()) {
-            const contents = ejs.render(fs.readFileSync(origFilePath, 'utf8'), ejsConfig);
-            const writePath = path.join(process.cwd(), projectName, file);
+            const fileRead = fs.readFileSync(origFilePath, 'utf8');
+            const contents = ejsConfig ? ejs.render(fileRead, ejsConfig) : fileRead;
+            const writePath = path.join(projectPath, file);
             fs.writeFileSync(writePath, contents, 'utf8');
         }
-        else if (stats.isDirectory()) {
-            fs.mkdirSync(path.join(process.cwd(), projectName, file));
-            copyTemplateRecursivly(path.join(templatePath, file), path.join(projectName, file), ejsConfig);
+        if (stats.isDirectory()) {
+            fs.mkdirSync(path.join(projectPath, file));
+            copyTemplate(path.join(templatePath, file), path.join(projectPath, file), ejsConfig);
         }
     });
 }
-exports.default = copyTemplateRecursivly;
+exports.default = copyTemplate;

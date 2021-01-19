@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const questions = [
+exports.nuxtQuestion = void 0;
+exports.nuxtQuestion = [
     {
         name: 'programmingLanguage',
         type: 'list',
@@ -58,4 +59,3 @@ const questions = [
     }
     // TODO Add form-builder
 ];
-exports.default = questions;

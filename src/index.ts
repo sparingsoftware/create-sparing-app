@@ -1,48 +1,32 @@
 #!/usr/bin/env node
-import * as inquirer from 'inquirer'
-import createProject from './create-project'
-import mainQuestions from './main-questions'
-import nuxtQuestion from './projects/nuxt/nuxt-questions'
-import { EjsConfig } from './projects/ejsConfig'
-import {
-  checkNodeVersion,
-  installDependencies,
-  renderLogo,
-  showFinalInfo
-} from './utils'
 
-checkNodeVersion()
-renderLogo()
+import * as path from 'path'
+import checkNodeVersion from './modules/check-node'
+import renderLogo from './modules/render-logo'
+import getProjectName from './modules/get-project-name'
+import getTemplateName from './modules/get-template-name'
+import getEjsConfig from './modules/get-ejs-config'
+import createProjectDir from './modules/create-project-dir'
+import copyTemplate from './modules/copy-template'
+import installDependencies from './modules/install-dependencies'
+import initGitRepository from './modules/init-git-repository'
+import showFinalInfo from './modules/show-final-info'
 
-inquirer.prompt(mainQuestions).then(async mainAnswers => {
-  let ejsConfig: EjsConfig
+async function main() {
+  checkNodeVersion()
+  renderLogo()
 
-  // if (mainAnswers.template === ProjectTemplateName.Nuxt) {
-  const projectAnswers = await inquirer.prompt(nuxtQuestion)
+  const templateName = await getTemplateName()
+  const projectName = await getProjectName()
+  const templatePath = path.join(__dirname, '../templates', templateName)
+  const projectPath = path.join(process.cwd(), projectName)
+  const ejsConfig = await getEjsConfig(projectName, templateName)
 
-  ejsConfig = {
-    projectName: mainAnswers.projectName,
-    programmingLanguage: projectAnswers.programmingLanguage,
-    nuxtSparingCenter: {
-      axiosGenerateCache: projectAnswers.axiosGenerateCache,
-      axiosI18nHeader: projectAnswers.axiosI18nHeader,
-      axiosRenameKeys: projectAnswers.axiosRenameKeys,
-      fixBrowserStyles: projectAnswers.fixBrowserStyles,
-      plugins: projectAnswers.plugins,
-      sassUtilsCollection: projectAnswers.sassUtilsCollection
-    }
-  }
-  // }
-
-  createProject({
-    projectName: mainAnswers.projectName,
-    templateName: mainAnswers.template,
-    ejsConfig
-  })
-
-  installDependencies({
-    dir: mainAnswers.projectName
-  })
-
+  createProjectDir(projectPath)
+  copyTemplate(templatePath, projectPath, ejsConfig)
+  installDependencies(projectPath)
+  initGitRepository(projectPath)
   showFinalInfo()
-})
+}
+
+main()

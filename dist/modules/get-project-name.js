@@ -18,23 +18,19 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const fs = __importStar(require("fs"));
-const path = __importStar(require("path"));
-const shell = __importStar(require("shelljs"));
-const copy_template_1 = __importDefault(require("./copy-template"));
-const utils_1 = require("./utils");
-function createProject({ projectName, templateName, ejsConfig }) {
-    const projectPath = path.join(process.cwd(), projectName);
-    const templatePath = path.join(__dirname, '../', 'templates', templateName);
-    if (fs.existsSync(projectPath)) {
-        utils_1.log.error(`Folder ${projectPath} exists. Delete or use another name.`);
-        shell.exit(1);
-    }
-    fs.mkdirSync(projectPath);
-    copy_template_1.default(templatePath, projectName, ejsConfig);
+const inquirer = __importStar(require("inquirer"));
+async function getProjectName() {
+    const projectNameQuestion = {
+        name: 'projectName',
+        type: 'input',
+        message: 'Project name:',
+        validate: (input) => /^([A-Za-z\-\_\d])+$/.test(input) ||
+            'Project name may only include letters, numbers, underscores and hashes.'
+    };
+    const answers = await inquirer.prompt([
+        projectNameQuestion
+    ]);
+    return answers.projectName;
 }
-exports.default = createProject;
+exports.default = getProjectName;

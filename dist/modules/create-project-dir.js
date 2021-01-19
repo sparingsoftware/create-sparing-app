@@ -18,25 +18,15 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.exec = exports.log = void 0;
+const fs = __importStar(require("fs"));
 const shell = __importStar(require("shelljs"));
-const chalk_1 = __importDefault(require("chalk"));
-exports.log = {
-    error(msg) {
-        console.log(chalk_1.default.red(msg));
-    },
-    info(msg) {
-        console.log(chalk_1.default.whiteBright(msg));
-    },
-    black(msg) {
-        console.log(chalk_1.default.bgRgb(0, 0, 0).whiteBright(msg));
+const utils_1 = require("../utils");
+function createProjectDir(projectPath) {
+    if (fs.existsSync(projectPath)) {
+        utils_1.log.error(`Folder ${projectPath} exists. Delete or use another name.`);
+        shell.exit(1);
     }
-};
-function exec(command) {
-    return shell.exec(command, { silent: true }).stdout;
+    fs.mkdirSync(projectPath);
 }
-exports.exec = exec;
+exports.default = createProjectDir;

@@ -23,37 +23,29 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const inquirer = __importStar(require("inquirer"));
-const create_project_1 = __importDefault(require("./create-project"));
-const main_questions_1 = __importDefault(require("./main-questions"));
-const nuxt_questions_1 = __importDefault(require("./projects/nuxt/nuxt-questions"));
-const utils_1 = require("./utils");
-utils_1.checkNodeVersion();
-utils_1.renderLogo();
-inquirer.prompt(main_questions_1.default).then(async (mainAnswers) => {
-    let ejsConfig;
-    // if (mainAnswers.template === ProjectTemplateName.Nuxt) {
-    const projectAnswers = await inquirer.prompt(nuxt_questions_1.default);
-    ejsConfig = {
-        projectName: mainAnswers.projectName,
-        programmingLanguage: projectAnswers.programmingLanguage,
-        nuxtSparingCenter: {
-            axiosGenerateCache: projectAnswers.axiosGenerateCache,
-            axiosI18nHeader: projectAnswers.axiosI18nHeader,
-            axiosRenameKeys: projectAnswers.axiosRenameKeys,
-            fixBrowserStyles: projectAnswers.fixBrowserStyles,
-            plugins: projectAnswers.plugins,
-            sassUtilsCollection: projectAnswers.sassUtilsCollection
-        }
-    };
-    // }
-    create_project_1.default({
-        projectName: mainAnswers.projectName,
-        templateName: mainAnswers.template,
-        ejsConfig
-    });
-    utils_1.installDependencies({
-        dir: mainAnswers.projectName
-    });
-    utils_1.showFinalInfo();
-});
+const path = __importStar(require("path"));
+const check_node_1 = __importDefault(require("./modules/check-node"));
+const render_logo_1 = __importDefault(require("./modules/render-logo"));
+const get_project_name_1 = __importDefault(require("./modules/get-project-name"));
+const get_template_name_1 = __importDefault(require("./modules/get-template-name"));
+const get_ejs_config_1 = __importDefault(require("./modules/get-ejs-config"));
+const create_project_dir_1 = __importDefault(require("./modules/create-project-dir"));
+const copy_template_1 = __importDefault(require("./modules/copy-template"));
+const install_dependencies_1 = __importDefault(require("./modules/install-dependencies"));
+const init_git_repository_1 = __importDefault(require("./modules/init-git-repository"));
+const show_final_info_1 = __importDefault(require("./modules/show-final-info"));
+async function main() {
+    check_node_1.default();
+    render_logo_1.default();
+    const templateName = await get_template_name_1.default();
+    const projectName = await get_project_name_1.default();
+    const templatePath = path.join(__dirname, '../templates', templateName);
+    const projectPath = path.join(process.cwd(), projectName);
+    const ejsConfig = await get_ejs_config_1.default(projectName, templateName);
+    create_project_dir_1.default(projectPath);
+    copy_template_1.default(templatePath, projectPath, ejsConfig);
+    install_dependencies_1.default(projectPath);
+    init_git_repository_1.default(projectPath);
+    show_final_info_1.default();
+}
+main();

@@ -1,14 +1,14 @@
 import { DistinctQuestion } from 'inquirer'
+import { ProgrammingLanguage } from '../src/types'
 
-const questions: DistinctQuestion[] = [
+export const nuxtQuestion: DistinctQuestion[] = [
   {
     name: 'programmingLanguage',
     type: 'list',
     message: 'Programming language:',
     choices: [
       'JavaScript',
-      'TypeScript (WIP)'
-      // TODO copy tsconfig instead of jsconfig, create store.ts instead of js
+      'TypeScript (WIP)' // TODO copy tsconfig instead of jsconfig, create store.ts instead of js
     ]
   },
   {
@@ -60,4 +60,27 @@ const questions: DistinctQuestion[] = [
   // TODO Add form-builder
 ]
 
-export default questions
+export interface NuxtQuestions {
+  programmingLanguage: ProgrammingLanguage
+  fixBrowserStyles: 'reset' | 'normalize'
+  sassUtilsCollection: boolean
+  plugins: 'vue-on-resize' | 'v-clamp' | '100vh'
+  axiosRenameKeys: boolean
+  axiosI18nHeader: boolean
+  axiosGenerateCache: boolean
+}
+
+interface NuxtSparingCenter {
+  fixBrowserStyles: 'reset' | 'normalize'
+  sassUtilsCollection: boolean
+  plugins: 'vue-on-resize' | 'v-clamp' | '100vh'
+  axiosRenameKeys: boolean
+  axiosI18nHeader: boolean
+  axiosGenerateCache: boolean
+}
+
+export interface NuxtEjsConfig {
+  projectName: string
+  programmingLanguage: ProgrammingLanguage
+  nuxtSparingCenter: NuxtSparingCenter
+}
