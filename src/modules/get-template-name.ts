@@ -1,8 +1,9 @@
-import * as inquirer from 'inquirer'
+import * as defaultInquirer from 'inquirer'
+import { ListQuestion } from 'inquirer'
 import { TemplateName } from '../types'
 
-export default async function getTemplateName() {
-  const templateNameQuestion: inquirer.ListQuestion = {
+export default async function getTemplateName(inquirer = defaultInquirer) {
+  const templateNameQuestion: ListQuestion = {
     name: 'templateName',
     type: 'list',
     message: 'What kind of app do You need?',

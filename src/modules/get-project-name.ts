@@ -1,13 +1,15 @@
-import * as inquirer from 'inquirer'
+import * as defaultInquirer from 'inquirer'
+import * as validate from 'validate-npm-package-name'
+import { InputQuestion } from 'inquirer'
 
-export default async function getProjectName() {
-  const projectNameQuestion: inquirer.InputQuestion = {
+export default async function getProjectName(inquirer = defaultInquirer) {
+  const projectNameQuestion: InputQuestion = {
     name: 'projectName',
     type: 'input',
     message: 'Project name:',
     validate: (input: string) =>
-      /^([A-Za-z\-\_\d])+$/.test(input) ||
-      'Project name may only include letters, numbers, underscores and hashes.'
+      validate(input).validForNewPackages ||
+      'Project name must be valid npm package name'
   }
 
   const answers = await inquirer.prompt<{ projectName: string }>([

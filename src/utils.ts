@@ -1,7 +1,13 @@
 import * as shell from 'shelljs'
 import chalk from 'chalk'
 
-export const log = {
+export interface Log {
+  error: (msg: string) => void
+  info: (msg: string) => void
+  black: (msg: string) => void
+}
+
+export const log: Log = {
   error(msg: string) {
     console.log(chalk.red(msg))
   },
