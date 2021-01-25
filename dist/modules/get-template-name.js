@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const inquirer_1 = __importDefault(require("inquirer"));
 const types_1 = require("../types");
-async function getTemplateName(inquirer = inquirer_1.default) {
+async function getTemplateName() {
     const templateNameQuestion = {
         name: 'templateName',
         type: 'list',
@@ -21,7 +21,7 @@ async function getTemplateName(inquirer = inquirer_1.default) {
             }
         ]
     };
-    const answers = await inquirer.prompt([
+    const answers = await inquirer_1.default.prompt([
         templateNameQuestion
     ]);
     return answers.templateName;

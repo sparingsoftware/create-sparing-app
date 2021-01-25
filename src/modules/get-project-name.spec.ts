@@ -1,40 +1,36 @@
 import getProjectName from './get-project-name'
-import defaultInquirer from 'inquirer'
+import inquirer from 'inquirer'
 import { InputQuestion } from 'inquirer'
 
-describe('get-project-name module', () => {
-  it('returns project name', async done => {
-    const inquirer = {
-      async prompt(_: any) {
-        return {
-          projectName: 'test'
-        }
-      }
-    }
+jest.mock('inquirer')
 
-    const name = await getProjectName(inquirer as typeof defaultInquirer)
+describe('get-project-name module', () => {
+  const promptMock = (inquirer.prompt as unknown) as jest.Mock
+
+  it('returns project name', async done => {
+    promptMock.mockResolvedValue({ projectName: 'test' })
+    const name = await getProjectName()
     expect(name).toBe('test')
     done()
   })
 
   it('validates project name', async done => {
-    const inquirer = {
-      async prompt(questions: InputQuestion[]) {
-        const question = questions[0]
+    promptMock.mockReset()
+    promptMock.mockImplementation((questions: InputQuestion[]) => {
+      const question = questions[0]
 
-        if (question.validate) {
-          expect(question.validate('valid-name')).toBe(true)
-          expect(question.validate('valid_1name')).toBe(true)
-          expect(question.validate('`invalidname')).not.toBe(true)
-        }
-
-        expect(question.name).toBe('projectName')
-
-        return {}
+      if (question.validate) {
+        expect(question.validate('valid-name')).toBe(true)
+        expect(question.validate('valid_1name')).toBe(true)
+        expect(question.validate('`invalidname')).not.toBe(true)
       }
-    }
 
-    await getProjectName(inquirer as typeof defaultInquirer)
+      expect(question.name).toBe('projectName')
+
+      return Promise.resolve({})
+    })
+
+    await getProjectName()
     done()
   })
 })

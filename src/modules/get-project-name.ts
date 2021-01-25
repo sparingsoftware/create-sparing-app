@@ -1,8 +1,8 @@
-import defaultInquirer from 'inquirer'
+import inquirer from 'inquirer'
 import validate from 'validate-npm-package-name'
 import { InputQuestion } from 'inquirer'
 
-export default async function getProjectName(inquirer = defaultInquirer) {
+export default async function getProjectName() {
   const projectNameQuestion: InputQuestion = {
     name: 'projectName',
     type: 'input',

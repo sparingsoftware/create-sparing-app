@@ -1,43 +1,36 @@
 import getTemplateName from './get-template-name'
-import defaultInquirer from 'inquirer'
+import inquirer from 'inquirer'
 import { ListQuestion } from 'inquirer'
 
+jest.mock('inquirer')
+
 describe('get-template-name module', () => {
+  const promptMock = (inquirer.prompt as unknown) as jest.Mock
+
   it('has question with templates names', async done => {
-    const inquirer = {
-      async prompt(questions: ListQuestion[]) {
-        const question = questions[0]
-        if (question) {
-          expect(question.name).toBe('templateName')
-          expect(question.type).toBe('list')
+    promptMock.mockImplementation((questions: ListQuestion[]) => {
+      const question = questions[0]
+      expect(question.name).toBe('templateName')
+      expect(question.type).toBe('list')
 
-          const chocies = (question.choices as Array<any>).map(
-            question => question.value
-          )
+      const chocies = (question.choices as Array<any>).map(
+        question => question.value
+      )
 
-          expect(chocies.includes('nuxt')).toBeTruthy()
-          expect(chocies.includes('simple')).toBeTruthy()
-        }
+      expect(chocies.includes('nuxt')).toBeTruthy()
+      expect(chocies.includes('simple')).toBeTruthy()
 
-        return {}
-      }
-    }
+      return Promise.resolve({})
+    })
 
-    getTemplateName(inquirer as typeof defaultInquirer)
-
+    await getTemplateName()
     done()
   })
 
   it('returns template name', async done => {
-    const inquirer = {
-      async prompt(_: any) {
-        return {
-          templateName: 'test'
-        }
-      }
-    }
-
-    const name = await getTemplateName(inquirer as typeof defaultInquirer)
+    promptMock.mockReset()
+    promptMock.mockResolvedValue({ templateName: 'test' })
+    const name = await getTemplateName()
     expect(name).toBe('test')
     done()
   })

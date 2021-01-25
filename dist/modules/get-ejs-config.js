@@ -6,14 +6,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const inquirer_1 = __importDefault(require("inquirer"));
 const nuxt_1 = require("../projects/nuxt");
 const types_1 = require("../types");
-async function getEjsConfig(projectName, templateName, inquirer = inquirer_1.default) {
+async function getEjsConfig(projectName, templateName) {
     let ejsConfig;
     switch (templateName) {
         /**
          * Nuxt
          */
         case types_1.TemplateName.Nuxt:
-            const nuxt = await inquirer.prompt(nuxt_1.nuxtQuestion);
+            const nuxt = await inquirer_1.default.prompt(nuxt_1.nuxtQuestion);
             ejsConfig = {
                 projectName: projectName,
                 programmingLanguage: nuxt.programmingLanguage,

@@ -1,6 +1,8 @@
 import { TemplateName } from '../types'
 import getEjsConfig from './get-ejs-config'
-import * as defaultInquirer from 'inquirer'
+import inquirer from 'inquirer'
+
+jest.mock('inquirer')
 
 describe('get-ejs-config module', () => {
   it('return Nuxt config', async done => {
@@ -13,27 +15,19 @@ describe('get-ejs-config module', () => {
     const axiosI18nHeader = 'test'
     const plugins = 'test'
 
-    const inquirer: {
-      prompt: unknown
-    } = {
-      async prompt() {
-        return {
-          programmingLanguage,
-          fixBrowserStyles,
-          sassUtilsCollection,
-          plugins,
-          axiosRenameKeys,
-          axiosI18nHeader,
-          axiosGenerateCache
-        }
-      }
-    }
+    const inquierPropmtMock = (inquirer.prompt as unknown) as jest.Mock
 
-    const ejsConfig = await getEjsConfig(
-      projectName,
-      'nuxt' as TemplateName,
-      inquirer as typeof defaultInquirer
-    )
+    inquierPropmtMock.mockResolvedValue({
+      programmingLanguage,
+      fixBrowserStyles,
+      sassUtilsCollection,
+      plugins,
+      axiosRenameKeys,
+      axiosI18nHeader,
+      axiosGenerateCache
+    })
+
+    const ejsConfig = await getEjsConfig(projectName, 'nuxt' as TemplateName)
 
     expect(ejsConfig).toMatchObject({
       projectName,

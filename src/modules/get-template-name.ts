@@ -1,8 +1,8 @@
-import defaultInquirer from 'inquirer'
+import inquirer from 'inquirer'
 import { ListQuestion } from 'inquirer'
 import { TemplateName } from '../types'
 
-export default async function getTemplateName(inquirer = defaultInquirer) {
+export default async function getTemplateName() {
   const templateNameQuestion: ListQuestion = {
     name: 'templateName',
     type: 'list',
