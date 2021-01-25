@@ -1,13 +1,8 @@
-import * as defaultFs from 'fs'
-import * as defaultShell from 'shelljs'
-import { log as defaultLog } from '../utils'
+import fs from 'fs'
+import shell from 'shelljs'
+import { log } from '../utils'
 
-export default function createProjectDir(
-  projectPath: string,
-  shell = defaultShell,
-  fs = defaultFs,
-  log = defaultLog
-) {
+export default function createProjectDir(projectPath: string) {
   if (fs.existsSync(projectPath)) {
     log.error(`Folder ${projectPath} exists. Delete or use another name.`)
     shell.exit(1)

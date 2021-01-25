@@ -1,6 +1,6 @@
-import * as fs from 'fs'
-import * as ejs from 'ejs'
-import * as path from 'path'
+import fs from 'fs'
+import ejs from 'ejs'
+import path from 'path'
 import { EjsConfig } from '../types'
 
 export default function copyTemplate(

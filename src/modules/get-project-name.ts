@@ -1,5 +1,5 @@
-import * as defaultInquirer from 'inquirer'
-import * as validate from 'validate-npm-package-name'
+import defaultInquirer from 'inquirer'
+import validate from 'validate-npm-package-name'
 import { InputQuestion } from 'inquirer'
 
 export default async function getProjectName(inquirer = defaultInquirer) {

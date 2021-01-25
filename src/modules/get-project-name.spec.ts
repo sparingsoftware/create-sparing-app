@@ -1,11 +1,11 @@
 import getProjectName from './get-project-name'
-import * as defaultInquirer from 'inquirer'
+import defaultInquirer from 'inquirer'
 import { InputQuestion } from 'inquirer'
 
 describe('get-project-name module', () => {
   it('returns project name', async done => {
     const inquirer = {
-      async prompt(_) {
+      async prompt(_: any) {
         return {
           projectName: 'test'
         }
@@ -21,10 +21,14 @@ describe('get-project-name module', () => {
     const inquirer = {
       async prompt(questions: InputQuestion[]) {
         const question = questions[0]
+
+        if (question.validate) {
+          expect(question.validate('valid-name')).toBe(true)
+          expect(question.validate('valid_1name')).toBe(true)
+          expect(question.validate('`invalidname')).not.toBe(true)
+        }
+
         expect(question.name).toBe('projectName')
-        expect(question.validate('valid-name')).toBe(true)
-        expect(question.validate('valid_1name')).toBe(true)
-        expect(question.validate('`invalidname')).not.toBe(true)
 
         return {}
       }

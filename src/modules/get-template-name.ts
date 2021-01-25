@@ -1,4 +1,4 @@
-import * as defaultInquirer from 'inquirer'
+import defaultInquirer from 'inquirer'
 import { ListQuestion } from 'inquirer'
 import { TemplateName } from '../types'
 

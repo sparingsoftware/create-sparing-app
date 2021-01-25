@@ -1,5 +1,5 @@
 import { DistinctQuestion } from 'inquirer'
-import { ProgrammingLanguage } from '../src/types'
+import { ProgrammingLanguage } from '../types'
 
 export const nuxtQuestion: DistinctQuestion[] = [
   {

@@ -1,65 +1,33 @@
 import createProjectDir from './create-project-dir'
-import * as defaultShell from 'shelljs'
-import * as defaultFs from 'fs'
-import { Log } from '../utils'
+import shell from 'shelljs'
+import fs from 'fs'
+import { log } from '../utils'
+
+jest.mock('../utils')
+jest.mock('fs')
+jest.mock('shelljs')
 
 describe('create-project-dir module', () => {
   const examplePath = 'example/path'
-
-  let fs: { existsSync: unknown; mkdirSync: unknown }
-  let shell: { exit: unknown }
-  let log: { error: unknown }
-
-  beforeEach(() => {
-    fs = {
-      existsSync: () => false,
-      mkdirSync: jest.fn()
-    }
-
-    shell = {
-      exit: jest.fn()
-    }
-
-    log = {
-      error: jest.fn()
-    }
-  })
+  const existsSyncMock = fs.existsSync as jest.Mock
 
   it('creates directory if it is not exist', () => {
-    createProjectDir(
-      examplePath,
-      shell as typeof defaultShell,
-      fs as typeof defaultFs
-    )
-
+    existsSyncMock.mockReturnValue(false)
+    createProjectDir(examplePath)
     expect(fs.mkdirSync).toBeCalledWith(examplePath)
   })
 
   it('shows error if directory exists', () => {
-    fs.existsSync = () => true
-
-    createProjectDir(
-      examplePath,
-      shell as typeof defaultShell,
-      fs as typeof defaultFs,
-      log as Log
-    )
-
+    existsSyncMock.mockReturnValue(true)
+    createProjectDir(examplePath)
     expect(log.error).toBeCalledWith(
       `Folder ${examplePath} exists. Delete or use another name.`
     )
   })
 
   it('exits if directory exists', () => {
-    fs.existsSync = () => true
-
-    createProjectDir(
-      examplePath,
-      shell as typeof defaultShell,
-      fs as typeof defaultFs,
-      log as Log
-    )
-
+    existsSyncMock.mockReturnValue(true)
+    createProjectDir(examplePath)
     expect(shell.exit).toBeCalledWith(1)
   })
 })

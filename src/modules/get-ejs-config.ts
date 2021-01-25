@@ -1,5 +1,5 @@
-import * as defaultInquirer from 'inquirer'
-import { nuxtQuestion, NuxtQuestions } from '../../projects/nuxt'
+import defaultInquirer from 'inquirer'
+import { nuxtQuestion, NuxtQuestions } from '../projects/nuxt'
 import { EjsConfig, TemplateName } from '../types'
 
 export default async function getEjsConfig(

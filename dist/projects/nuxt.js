@@ -8,8 +8,7 @@ exports.nuxtQuestion = [
         message: 'Programming language:',
         choices: [
             'JavaScript',
-            'TypeScript (WIP)'
-            // TODO copy tsconfig instead of jsconfig, create store.ts instead of js
+            'TypeScript (WIP)' // TODO copy tsconfig instead of jsconfig, create store.ts instead of js
         ]
     },
     {

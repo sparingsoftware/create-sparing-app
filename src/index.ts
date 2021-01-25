@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import * as path from 'path'
+import path from 'path'
 import checkNodeVersion from './modules/check-node'
 import renderLogo from './modules/render-logo'
 import getProjectName from './modules/get-project-name'

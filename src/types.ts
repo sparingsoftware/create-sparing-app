@@ -1,4 +1,4 @@
-import { NuxtEjsConfig } from '../projects/nuxt'
+import { NuxtEjsConfig } from './projects/nuxt'
 
 export type EjsConfig = NuxtEjsConfig | null
 

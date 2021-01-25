@@ -1,5 +1,5 @@
 import getTemplateName from './get-template-name'
-import * as defaultInquirer from 'inquirer'
+import defaultInquirer from 'inquirer'
 import { ListQuestion } from 'inquirer'
 
 describe('get-template-name module', () => {
@@ -7,15 +7,17 @@ describe('get-template-name module', () => {
     const inquirer = {
       async prompt(questions: ListQuestion[]) {
         const question = questions[0]
-        expect(question.name).toBe('templateName')
-        expect(question.type).toBe('list')
+        if (question) {
+          expect(question.name).toBe('templateName')
+          expect(question.type).toBe('list')
 
-        const chocies = (question.choices as Array<any>).map(
-          question => question.value
-        )
+          const chocies = (question.choices as Array<any>).map(
+            question => question.value
+          )
 
-        expect(chocies.includes('nuxt')).toBeTruthy()
-        expect(chocies.includes('simple')).toBeTruthy()
+          expect(chocies.includes('nuxt')).toBeTruthy()
+          expect(chocies.includes('simple')).toBeTruthy()
+        }
 
         return {}
       }
@@ -28,7 +30,7 @@ describe('get-template-name module', () => {
 
   it('returns template name', async done => {
     const inquirer = {
-      async prompt(_) {
+      async prompt(_: any) {
         return {
           templateName: 'test'
         }
