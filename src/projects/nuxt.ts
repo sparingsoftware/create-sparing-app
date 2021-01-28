@@ -30,12 +30,6 @@ export const nuxtQuestion: DistinctQuestion[] = [
     choices: ['vue-on-resize', 'v-clamp', '100vh']
   },
   {
-    name: 'axiosRenameKeys',
-    type: 'confirm',
-    message: 'Transform snake_case keys in axios req/res',
-    default: true
-  },
-  {
     name: 'axiosI18nHeader',
     type: 'confirm',
     message: '(nuxt i18n) Add "Accept-Language" header to every axios request?',

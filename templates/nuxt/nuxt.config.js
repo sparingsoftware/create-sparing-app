@@ -44,7 +44,6 @@ export default {
         trailingSlash: false,
         axiosI18nHeader: <%= nuxtSparingCenter.axiosI18nHeader %>,
         axiosGenerateCache: <%= nuxtSparingCenter.axiosGenerateCache %>,
-        axiosRenameKeys: <%= nuxtSparingCenter.axiosRenameKeys %>,
         styleResources: true,
         sassUtilsCollection: <%= nuxtSparingCenter.sassUtilsCollection %>,
         boxSizing: true,
