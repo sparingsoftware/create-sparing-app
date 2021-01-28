@@ -25,13 +25,8 @@ export default {
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
-<% if (programmingLanguage === 'TypeScript') { _%>
-     // https://go.nuxtjs.dev/typescript
-    '@nuxt/typescript-build',
-<% } else if (programmingLanguage === 'JavaScript') { _%>
-    // https://go.nuxtjs.dev/eslint
-    '@nuxtjs/eslint-module'
-<% } _%>
+    // https://go.nuxtjs.dev/typescript
+    '@nuxt/typescript-build'
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -79,12 +74,5 @@ export default {
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
-
-<% if (programmingLanguage === 'TypeScript') { _%>
-  build: {
-    transpile: ['vuex-module-decorators']
-  }
-<% } else if (programmingLanguage === 'JavaScript') { _%>
   build: {}
-<% } _%>
 }

@@ -7,7 +7,6 @@ jest.mock('inquirer')
 describe('get-ejs-config module', () => {
   it('return Nuxt config', async done => {
     const projectName = 'test'
-    const programmingLanguage = 'test'
     const sassUtilsCollection = 'test'
     const axiosGenerateCache = 'test'
     const fixBrowserStyles = 'test'
@@ -18,7 +17,6 @@ describe('get-ejs-config module', () => {
     const inquierPropmtMock = (inquirer.prompt as unknown) as jest.Mock
 
     inquierPropmtMock.mockResolvedValue({
-      programmingLanguage,
       fixBrowserStyles,
       sassUtilsCollection,
       plugins,
@@ -31,7 +29,6 @@ describe('get-ejs-config module', () => {
 
     expect(ejsConfig).toMatchObject({
       projectName,
-      programmingLanguage,
       nuxtSparingCenter: {
         fixBrowserStyles,
         sassUtilsCollection,

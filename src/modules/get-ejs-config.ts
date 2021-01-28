@@ -17,7 +17,6 @@ export default async function getEjsConfig(
 
       ejsConfig = {
         projectName: projectName,
-        programmingLanguage: nuxt.programmingLanguage,
         nuxtSparingCenter: {
           axiosGenerateCache: nuxt.axiosGenerateCache,
           axiosI18nHeader: nuxt.axiosI18nHeader,

@@ -17,6 +17,14 @@
   ],
   "author": "Panowie Programiści",
   "license": "MIT",
+  "dependencies": {
+    "@types/jest": "^26.0.20",
+    "ejs": "^3.1.5",
+    "inquirer": "^7.3.3",
+    "jest": "^26.6.3",
+    "shelljs": "^0.8.4",
+    "validate-npm-package-name": "^3.0.0"
+  },
   "devDependencies": {
     "@types/ejs": "^3.0.5",
     "@types/inquirer": "^7.3.1",
@@ -27,13 +35,5 @@
     "ts-jest": "^26.4.4",
     "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
-  },
-  "dependencies": {
-    "@types/jest": "^26.0.20",
-    "ejs": "^3.1.5",
-    "inquirer": "^7.3.3",
-    "jest": "^26.6.3",
-    "shelljs": "^0.8.4",
-    "validate-npm-package-name": "^3.0.0"
   }
 }

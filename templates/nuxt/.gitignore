@@ -88,3 +88,6 @@ sw.*
 
 # Vim swap files
 *.swp
+
+# auto-generate http service
+service/index.ts

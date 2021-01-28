@@ -3,15 +3,6 @@ import { ProgrammingLanguage } from '../types'
 
 export const nuxtQuestion: DistinctQuestion[] = [
   {
-    name: 'programmingLanguage',
-    type: 'list',
-    message: 'Programming language:',
-    choices: [
-      'JavaScript',
-      'TypeScript (WIP)' // TODO copy tsconfig instead of jsconfig, create store.ts instead of js
-    ]
-  },
-  {
     name: 'fixBrowserStyles',
     type: 'list',
     message: 'Overwrite user agent styles:',
@@ -81,6 +72,5 @@ interface NuxtSparingCenter {
 
 export interface NuxtEjsConfig {
   projectName: string
-  programmingLanguage: ProgrammingLanguage
   nuxtSparingCenter: NuxtSparingCenter
 }
