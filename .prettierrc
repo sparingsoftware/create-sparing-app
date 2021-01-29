@@ -7,5 +7,6 @@
   "bracketSpacing": true,
   "printWidth": 80,
   "useTabs": false,
-  "quotePsdfrops": "as-needed"
+  "quoteProps": "as-needed",
+  "tabWidth": 2
 }
