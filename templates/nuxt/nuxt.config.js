@@ -39,16 +39,10 @@ export default {
       '@sparing-software/nuxt-sparing-center',
       {
         plugins: [<%- nuxtSparingCenter.plugins.map(plugin => `'${plugin}'`).join(', ') %>],
-        serviceModule: true,
-        baseImport: false,
         trailingSlash: false,
         axiosI18nHeader: <%= nuxtSparingCenter.axiosI18nHeader %>,
-        axiosGenerateCache: <%= nuxtSparingCenter.axiosGenerateCache %>,
-        styleResources: true,
         sassUtilsCollection: <%= nuxtSparingCenter.sassUtilsCollection %>,
-        boxSizing: true,
-        fixBrowserStyles: '<%= nuxtSparingCenter.fixBrowserStyles %>',
-        fixFontSmoothing: true
+        fixBrowserStyles: '<%= nuxtSparingCenter.fixBrowserStyles %>'
       }
     ],
 
