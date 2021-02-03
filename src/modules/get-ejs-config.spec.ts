@@ -8,9 +8,7 @@ describe('get-ejs-config module', () => {
   it('return Nuxt config', async done => {
     const projectName = 'test'
     const sassUtilsCollection = 'test'
-    const axiosGenerateCache = 'test'
     const fixBrowserStyles = 'test'
-    const axiosRenameKeys = 'test'
     const axiosI18nHeader = 'test'
     const plugins = 'test'
 
@@ -20,9 +18,7 @@ describe('get-ejs-config module', () => {
       fixBrowserStyles,
       sassUtilsCollection,
       plugins,
-      axiosRenameKeys,
-      axiosI18nHeader,
-      axiosGenerateCache
+      axiosI18nHeader
     })
 
     const ejsConfig = await getEjsConfig(projectName, 'nuxt' as TemplateName)
@@ -33,9 +29,7 @@ describe('get-ejs-config module', () => {
         fixBrowserStyles,
         sassUtilsCollection,
         plugins,
-        axiosRenameKeys,
-        axiosI18nHeader,
-        axiosGenerateCache
+        axiosI18nHeader
       }
     })
 

@@ -52,9 +52,7 @@ interface NuxtSparingCenter {
   fixBrowserStyles: 'reset' | 'normalize'
   sassUtilsCollection: boolean
   plugins: 'vue-on-resize' | 'v-clamp' | '100vh'
-  axiosRenameKeys: boolean
   axiosI18nHeader: boolean
-  axiosGenerateCache: boolean
 }
 
 export interface NuxtEjsConfig {

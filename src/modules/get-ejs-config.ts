@@ -18,9 +18,7 @@ export default async function getEjsConfig(
       ejsConfig = {
         projectName: projectName,
         nuxtSparingCenter: {
-          axiosGenerateCache: nuxt.axiosGenerateCache,
           axiosI18nHeader: nuxt.axiosI18nHeader,
-          axiosRenameKeys: nuxt.axiosRenameKeys,
           fixBrowserStyles: nuxt.fixBrowserStyles,
           plugins: nuxt.plugins,
           sassUtilsCollection: nuxt.sassUtilsCollection
