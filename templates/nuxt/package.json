@@ -14,6 +14,17 @@
     "test": "jest"
   },
   "author": "Panowie Programiści",
+  "dependencies": {
+    "@nuxt/typescript-runtime": "^2.0.0",
+    "@nuxtjs/axios": "^5.9.5",
+    "@nuxtjs/dotenv": "^1.4.1",
+    "@nuxtjs/google-gtag": "^1.0.4",
+    "@nuxtjs/sitemap": "^2.4.0",
+    "@sparing-software/nuxt-sparing-center": "^3.0.0",
+    "nuxt": "^2.15.0",
+    "core-js": "^3.6.5",
+    "smoothscroll-polyfill": "^0.4.4"
+  },
   "devDependencies": {
     "@nuxt/types": "^2.14.6",
     "@nuxt/typescript-build": "^2.0.3",
@@ -34,16 +45,5 @@
     "sass-loader": "^10.0.0",
     "ts-jest": "^26.4.1",
     "vue-jest": "^3.0.4"
-  },
-  "dependencies": {
-    "@nuxt/typescript-runtime": "^2.0.0",
-    "@nuxtjs/axios": "^5.9.5",
-    "@nuxtjs/dotenv": "^1.4.1",
-    "@nuxtjs/google-gtag": "^1.0.4",
-    "@nuxtjs/sitemap": "^2.4.0",
-    "@sparing-software/nuxt-sparing-center": "^3.0.0",
-    "nuxt": "^2.15.0",
-    "core-js": "^3.6.5",
-    "smoothscroll-polyfill": "^0.4.4"
   }
 }
