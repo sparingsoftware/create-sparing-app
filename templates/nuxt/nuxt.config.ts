@@ -1,8 +1,15 @@
+import { NuxtConfig } from '@nuxt/types'
 import dotenv from 'dotenv'
 
 dotenv.config()
 
-export default {
+const config: NuxtConfig = {
+  // Server configuration
+  server: {
+    host: '0.0.0.0',
+    port: process.env.NODE_ENV === 'production' ? 80 : 3000
+  },
+
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     title: '<%= projectName %>',
@@ -69,3 +76,5 @@ export default {
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {}
 }
+
+export default config
