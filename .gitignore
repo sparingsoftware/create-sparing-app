@@ -91,3 +91,6 @@ sw.*
 
 # auto-generate http service
 service/index.ts
+
+# dist
+dist

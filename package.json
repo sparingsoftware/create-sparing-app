@@ -1,10 +1,11 @@
 {
-  "name": "create-sparing-app",
+  "name": "@sparing-software/create-sparing-app",
   "version": "1.0.2",
   "description": "Create sparing app in seconds",
   "bin": "./dist/index.js",
   "main": "./dist/index.js",
   "scripts": {
+    "prepublish": "npm run build",
     "start": "ts-node src/index.ts",
     "build": "shx rm -rf dist && tsc",
     "test": "jest"
@@ -35,5 +36,8 @@
     "ts-jest": "^26.4.4",
     "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
-  }
+  },
+  "files": [
+    "dist"
+  ]
 }
