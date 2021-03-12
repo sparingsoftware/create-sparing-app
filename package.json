@@ -1,5 +1,5 @@
 {
-  "name": "@sparing-software/create-sparing-app",
+  "name": "create-sparing-app",
   "version": "1.0.0",
   "description": "Create sparing app in seconds",
   "bin": "./dist/index.js",
@@ -15,7 +15,7 @@
     "app",
     "nuxt"
   ],
-  "author": "SparingSoftware",
+  "author": "Panowie Programiści",
   "license": "MIT",
   "dependencies": {
     "@types/jest": "^26.0.20",
