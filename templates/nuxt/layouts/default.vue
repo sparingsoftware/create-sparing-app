@@ -1,7 +1,7 @@
 <template>
-  <section>
-    <h1>Sparing Interactive Nuxt App</h1>
-  </section>
+  <main>
+    <Nuxt />
+  </main>
 </template>
 
 <script lang="ts">
