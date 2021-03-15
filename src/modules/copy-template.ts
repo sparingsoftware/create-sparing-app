@@ -17,7 +17,13 @@ export default function copyTemplate(
     if (stats.isFile()) {
       const fileRead = fs.readFileSync(origFilePath, 'utf8')
       const contents = ejsConfig ? ejs.render(fileRead, ejsConfig) : fileRead
-      const writePath = path.join(projectPath, file)
+
+      // Change 'gitignore' to '.gitignore' due to npm gitignore issues
+      let writePath =
+        file === 'gitignore'
+          ? path.join(projectPath, '.gitignore')
+          : path.join(projectPath, file)
+
       fs.writeFileSync(writePath, contents, 'utf8')
     }
 
