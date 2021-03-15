@@ -1,6 +1,6 @@
 {
   "name": "@sparing-software/create-sparing-app",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Create sparing app in seconds",
   "bin": "./dist/index.js",
   "main": "./dist/index.js",
