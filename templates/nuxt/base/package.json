@@ -20,7 +20,6 @@
     "@nuxtjs/dotenv": "^1.4.1",
     "@nuxtjs/google-gtag": "^1.0.4",
     "@nuxtjs/sitemap": "^2.4.0",
-    "@sparing-software/nuxt-sparing-center": "^3.0.0",
     "nuxt": "^2.15.0",
     "core-js": "^3.6.5",
     "smoothscroll-polyfill": "^0.4.4"
@@ -44,6 +43,7 @@
     "node-sass": "^4.13.1",
     "prettier": "^2.1.2",
     "sass-loader": "^10.0.0",
+    "sass-utils-collection": "^2.0.1",
     "ts-jest": "^26.4.1",
     "vue-jest": "^3.0.4"
   }

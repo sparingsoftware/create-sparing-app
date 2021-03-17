@@ -1,6 +1,6 @@
-import { NuxtEjsConfig } from './projects/nuxt'
+import { NuxtQuestions } from './projects/nuxt/questions'
 
-export type EjsConfig = NuxtEjsConfig | null
+export type EjsConfig = NuxtQuestions
 
 export enum TemplateName {
   Nuxt = 'nuxt',

@@ -1,12 +1,12 @@
 import inquirer from 'inquirer'
-import { nuxtQuestion, NuxtQuestions } from '../projects/nuxt'
-import { EjsConfig, TemplateName } from '../types'
+import { nuxtQuestion, NuxtQuestions } from '../projects/nuxt/questions'
+import { TemplateName } from '../types'
 
 export default async function getEjsConfig(
   projectName: string,
   templateName: TemplateName
 ) {
-  let ejsConfig: EjsConfig
+  let ejsConfig: any
 
   switch (templateName) {
     /**
@@ -17,12 +17,9 @@ export default async function getEjsConfig(
 
       ejsConfig = {
         projectName: projectName,
-        nuxtSparingCenter: {
-          axiosI18nHeader: nuxt.axiosI18nHeader,
-          fixBrowserStyles: nuxt.fixBrowserStyles,
-          plugins: nuxt.plugins,
-          sassUtilsCollection: nuxt.sassUtilsCollection
-        }
+        axiosI18nHeader: nuxt.axiosI18nHeader,
+        fixBrowserStyles: nuxt.fixBrowserStyles,
+        plugins: nuxt.plugins
       }
 
       break

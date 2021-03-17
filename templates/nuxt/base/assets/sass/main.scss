@@ -1,0 +1,15 @@
+<%if (fixBrowserStyles === 'normalize') {
+%>@import '~normalize.css';
+<% } else if (fixBrowserStyles === 'ress') {
+%>@import '~ress';
+<% } %>@import 'modules/fonts';
+@import 'modules/typography';
+
+html, body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*, *::after, *::before {
+  box-sizing: border-box;
+}

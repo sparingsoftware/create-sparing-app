@@ -10,6 +10,10 @@ const config: NuxtConfig = {
     port: process.env.NODE_ENV === 'production' ? 80 : 3000
   },
 
+  router: {
+    middleware: ['trailing-slash'] 
+  },
+
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     title: '<%= projectName %>',
@@ -25,7 +29,12 @@ const config: NuxtConfig = {
   css: ['~/assets/sass/main.scss'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: [],
+  plugins: [
+    <%- plugins.map(plugin => plugin.mode ? `{
+      src: '@/plugins/${plugin.name}',
+      mode: '${plugin.mode}'
+    }`: `'@/plugins/${plugin.name}'`).join(',\n    ') %>
+  ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
@@ -40,18 +49,6 @@ const config: NuxtConfig = {
   modules: [
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
-
-    // https://github.com/SparingSoftware/nuxt-sparing-center
-    [
-      '@sparing-software/nuxt-sparing-center',
-      {
-        plugins: [<%- nuxtSparingCenter.plugins.map(plugin => `'${plugin}'`).join(', ') %>],
-        trailingSlash: false,
-        axiosI18nHeader: <%= nuxtSparingCenter.axiosI18nHeader %>,
-        sassUtilsCollection: <%= nuxtSparingCenter.sassUtilsCollection %>,
-        fixBrowserStyles: '<%= nuxtSparingCenter.fixBrowserStyles %>'
-      }
-    ],
 
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios'

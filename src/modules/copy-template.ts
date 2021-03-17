@@ -1,12 +1,11 @@
 import fs from 'fs'
 import ejs from 'ejs'
 import path from 'path'
-import { EjsConfig } from '../types'
 
 export default function copyTemplate(
   templatePath: string,
   projectPath: string,
-  ejsConfig: EjsConfig
+  ejsConfig: any
 ) {
   const filesToCreate = fs.readdirSync(templatePath)
 

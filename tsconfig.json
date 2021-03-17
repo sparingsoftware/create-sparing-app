@@ -16,5 +16,11 @@
     "esModuleInterop": true,
     "module": "CommonJS"
   },
-  "exclude": ["node_modules", "dist", "templates", "**/*.spec.ts"]
+  "exclude": [
+    "node_modules",
+    "dist",
+    "templates/**/*",
+    "**/*.spec.ts",
+    "src/projects/**/files/**/*"
+  ]
 }
