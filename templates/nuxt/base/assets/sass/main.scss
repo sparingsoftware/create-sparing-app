@@ -5,11 +5,14 @@
 <% } %>@import 'modules/fonts';
 @import 'modules/typography';
 
-html, body {
+html,
+body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-*, *::after, *::before {
+*,
+*::after,
+*::before {
   box-sizing: border-box;
 }
