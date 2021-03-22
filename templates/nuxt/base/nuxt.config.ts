@@ -10,9 +10,7 @@ const config: NuxtConfig = {
     port: process.env.NODE_ENV === 'production' ? 80 : 3000
   },
 
-  router: {
-    middleware: ['trailing-slash'] 
-  },
+  serverMiddleware: ['~/server-middleware/trailing-slash'],
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
