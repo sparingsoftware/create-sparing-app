@@ -4,9 +4,6 @@ module.exports = {
     browser: true,
     node: true
   },
-  parserOptions: {
-    parser: 'babel-eslint'
-  },
   extends: [
     '@nuxtjs/eslint-config-typescript',
     'prettier',
@@ -16,6 +13,9 @@ module.exports = {
   ],
   plugins: ['prettier'],
   rules: {
-    'vue/no-v-html': 0
+    'vue/no-v-html': 0,
+     camelcase: {
+      properties: 'never'
+    }
   }
 }
