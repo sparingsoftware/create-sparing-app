@@ -90,4 +90,4 @@ sw.*
 *.swp
 
 # auto-generate http service
-service/index.ts
+service/__generated-api.ts
