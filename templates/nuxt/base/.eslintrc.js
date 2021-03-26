@@ -15,7 +15,9 @@ module.exports = {
   rules: {
     'vue/no-v-html': 0,
      camelcase: {
-      properties: 'never'
+      properties: 'never',
+      ignoreImports: true,
+      ignoreGlobals: true
     }
   }
 }
