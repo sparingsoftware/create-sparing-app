@@ -9,7 +9,7 @@ export default async function getTemplateName() {
     message: 'What kind of app do You need?',
     choices: [
       {
-        name: 'Nuxt app (nuxt-sparing-center)',
+        name: 'Nuxt app',
         value: TemplateName.Nuxt
       },
       {
