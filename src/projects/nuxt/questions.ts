@@ -11,6 +11,17 @@ interface PluginChoice {
   value: PluginChoiceValue
 }
 
+export enum FixBrowserStyles {
+  ress,
+  normalize
+}
+
+export interface NuxtQuestions {
+  fixBrowserStyles: FixBrowserStyles
+  plugins: PluginChoiceValue[]
+  axiosI18nHeader: boolean
+}
+
 export const nuxtQuestion: DistinctQuestion[] = [
   {
     name: 'fixBrowserStyles',
@@ -19,11 +30,11 @@ export const nuxtQuestion: DistinctQuestion[] = [
     choices: [
       {
         name: 'ress',
-        value: 'ress'
+        value: FixBrowserStyles.ress
       },
       {
         name: 'normalize.css',
-        value: 'normalize'
+        value: FixBrowserStyles.normalize
       }
     ]
   },
@@ -66,9 +77,3 @@ export const nuxtQuestion: DistinctQuestion[] = [
   }
   // TODO Add form-builder
 ]
-
-export interface NuxtQuestions {
-  fixBrowserStyles: 'reset' | 'normalize'
-  plugins: PluginChoiceValue[]
-  axiosI18nHeader: boolean
-}

@@ -2,13 +2,15 @@ import fs from 'fs'
 import path from 'path'
 import { EjsConfig } from '../../types'
 import { exec, log } from '../../utils'
+import shell from 'shelljs'
+import { FixBrowserStyles } from './questions'
 
-export default async function postInstall(
+export default async function install(
   ejsConfig: EjsConfig,
   templatePath: string,
   projectPath: string
 ) {
-  log.info('\nPost-install configuration...')
+  log.info('\nInstalling...')
 
   const npmPackages: string[] = []
 
@@ -32,18 +34,20 @@ export default async function postInstall(
    * Normalize css
    */
   switch (ejsConfig?.fixBrowserStyles) {
-    case 'normalize':
+    case FixBrowserStyles.normalize:
       npmPackages.push('normalize.css')
       break
 
-    case 'reset':
+    case FixBrowserStyles.ress:
       npmPackages.push('ress')
       break
   }
 
   /**
-   * Update package.json
+   * Install dependencies
    */
   const packages = npmPackages.join(' ')
-  exec(`npm i --ignore-scripts --no-audit --no-package-lock ${packages}`)
+  shell.cd(projectPath)
+  exec(`npm i ${packages}`)
+  exec('npm i')
 }
