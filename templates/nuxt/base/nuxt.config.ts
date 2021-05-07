@@ -69,7 +69,11 @@ const config: NuxtConfig = {
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
-  build: {}
+  build: {
+    babel: {
+      plugins: [['@babel/plugin-proposal-private-methods', { loose: true }]]
+    }
+  }
 }
 
 // Doc: https://github.com/nuxt-community/google-gtag-module
