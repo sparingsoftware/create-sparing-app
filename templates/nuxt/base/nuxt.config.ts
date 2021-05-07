@@ -87,26 +87,24 @@ if (process.env.GOOGLE_ID) {
 }
 
 if (process.env.FRONTEND_URL) {
-  config.modules?.push(...[
-    // https://github.com/nuxt-community/sitemap-module
-    [
-      '@nuxtjs/sitemap',
-      {
-        hostname: process.env.FRONTEND_URL,
-        path: '/sitemap.xml',
-        exclude: []
-      }
-    ],
+  // https://github.com/nuxt-community/sitemap-module
+  config.modules?.push([
+    '@nuxtjs/sitemap',
+    {
+      hostname: process.env.FRONTEND_URL,
+      path: '/sitemap.xml',
+      exclude: []
+    }
+  ])
 
-    // Doc: https://github.com/nuxt-community/robots-module
-    [
-      '@nuxtjs/robots',
-      {
-        UserAgent: '*',
-        Disallow: [],
-        Sitemap: `${process.env.FRONTEND_URL}/sitemap.xml`
-      }
-    ]
+  // Doc: https://github.com/nuxt-community/robots-module
+  config.modules?.push([
+    '@nuxtjs/robots',
+    {
+      UserAgent: '*',
+      Disallow: [],
+      Sitemap: `${process.env.FRONTEND_URL}/sitemap.xml`
+    }
   ])
 }
 
