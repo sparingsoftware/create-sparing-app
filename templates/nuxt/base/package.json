@@ -22,7 +22,8 @@
     "@nuxtjs/sitemap": "^2.4.0",
     "nuxt": "^2.15.0",
     "core-js": "^3.6.5",
-    "smoothscroll-polyfill": "^0.4.4"
+    "smoothscroll-polyfill": "^0.4.4",
+    "@nuxtjs/style-resources": "^1.0.0"
   },
   "devDependencies": {
     "@nuxt/types": "^2.14.6",

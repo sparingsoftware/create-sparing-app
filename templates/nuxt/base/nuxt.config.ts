@@ -24,7 +24,7 @@ const config: NuxtConfig = {
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: ['~/assets/sass/main.scss'],
+  css: ['~/assets/scss/main.scss'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
@@ -40,7 +40,10 @@ const config: NuxtConfig = {
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
     // https://go.nuxtjs.dev/typescript
-    '@nuxt/typescript-build'
+    '@nuxt/typescript-build',
+
+    // https://github.com/nuxt-community/style-resources-module#readme
+    '@nuxtjs/style-resources'
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -51,6 +54,14 @@ const config: NuxtConfig = {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios'
   ],
+
+
+  styleResources: {
+    scss: [
+      '~/assets/scss/_vars.scss',
+      '~/assets/scss/_mixins.scss'
+      ]
+  },
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {},
