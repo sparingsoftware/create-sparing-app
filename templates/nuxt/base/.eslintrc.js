@@ -14,10 +14,13 @@ module.exports = {
   plugins: ['prettier'],
   rules: {
     'vue/no-v-html': 0,
-     camelcase: {
-      properties: 'never',
-      ignoreImports: true,
-      ignoreGlobals: true
-    }
+    camelcase: [
+      'error',
+      {
+        properties: 'never',
+        ignoreImports: true,
+        ignoreGlobals: true
+      }
+    ]
   }
 }

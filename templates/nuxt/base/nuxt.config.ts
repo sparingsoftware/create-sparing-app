@@ -80,7 +80,43 @@ const config: NuxtConfig = {
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
-  build: {}
+  build: {
+    babel: {
+      plugins: [['@babel/plugin-proposal-private-methods', { loose: true }]]
+    }
+  }
+}
+
+// Doc: https://github.com/nuxt-community/google-gtag-module
+if (process.env.GOOGLE_ID) {
+  config.modules?.push([
+    '@nuxtjs/google-gtag',
+    {
+      id: process.env.GOOGLE_ID
+    }
+  ])
+}
+
+if (process.env.FRONTEND_URL) {
+  // https://github.com/nuxt-community/sitemap-module
+  config.modules?.push([
+    '@nuxtjs/sitemap',
+    {
+      hostname: process.env.FRONTEND_URL,
+      path: '/sitemap.xml',
+      exclude: []
+    }
+  ])
+
+  // Doc: https://github.com/nuxt-community/robots-module
+  config.modules?.push([
+    '@nuxtjs/robots',
+    {
+      UserAgent: '*',
+      Disallow: [],
+      Sitemap: `${process.env.FRONTEND_URL}/sitemap.xml`
+    }
+  ])
 }
 
 export default config
