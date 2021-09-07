@@ -43,7 +43,10 @@ const config: NuxtConfig = {
     '@nuxt/typescript-build',
 
     // https://github.com/nuxt-community/style-resources-module#readme
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
+
+    // https://typed-vuex.roe.dev/
+    'nuxt-typed-vuex'
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -84,7 +87,7 @@ const config: NuxtConfig = {
     babel: {
       plugins: [['@babel/plugin-proposal-private-methods', { loose: true }]]
     }
-  }
+  },
 }
 
 // Doc: https://github.com/nuxt-community/google-gtag-module
