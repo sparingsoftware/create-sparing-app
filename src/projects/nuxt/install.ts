@@ -10,7 +10,7 @@ export default async function install(
   templatePath: string,
   projectPath: string
 ) {
-  log.info('\nInstalling...')
+  log.info('\nInstalling node packages...')
 
   const npmPackages: string[] = []
 
