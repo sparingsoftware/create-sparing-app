@@ -12,8 +12,8 @@ interface PluginChoice {
 }
 
 export enum FixBrowserStyles {
-  ress,
-  normalize
+  ress = 'ress',
+  normalize = 'normalize'
 }
 
 export interface NuxtQuestions {
