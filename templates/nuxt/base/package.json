@@ -34,6 +34,7 @@
     "@nuxtjs/eslint-config-typescript": "^3.0.0",
     "@nuxtjs/eslint-module": "^2.0.0",
     "@types/node": "^14.14.22",
+    "@sparing-software/prettier-config": "^1.0.0",
     "@sparing-software/sparing-open-api": "^4.0.1",
     "@vue/test-utils": "^1.1.0",
     "babel-jest": "^26.5.0",
