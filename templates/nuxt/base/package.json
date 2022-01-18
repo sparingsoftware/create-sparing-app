@@ -23,7 +23,9 @@
     "@nuxtjs/sitemap": "^2.4.0",
     "nuxt": "^2.15.0",
     "nuxt-typed-vuex": "^0.2.0",
+    "postcss-focus-visible": "^6.0.3",
     "core-js": "^3.6.5",
+    "focus-visible": "^5.2.0",
     "smoothscroll-polyfill": "^0.4.4",
     "@nuxtjs/style-resources": "^1.0.0"
   },
