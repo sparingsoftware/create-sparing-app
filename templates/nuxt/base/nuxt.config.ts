@@ -1,5 +1,7 @@
 import { NuxtConfig } from '@nuxt/types'
 import dotenv from 'dotenv'
+// @ts-ignore
+import focusVisible from 'postcss-focus-visible'
 
 dotenv.config()
 
@@ -28,6 +30,10 @@ const config: NuxtConfig = {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
+    {
+      src: '@/plugins/focus-visible',
+      mode: 'client'
+    }<%- plugins.length > 0 ? ',' : '' %>
     <%- plugins.map(plugin => plugin.mode ? `{
       src: '@/plugins/${plugin.name}',
       mode: '${plugin.mode}'
@@ -86,6 +92,9 @@ const config: NuxtConfig = {
   build: {
     babel: {
       plugins: [['@babel/plugin-proposal-private-methods', { loose: true }]]
+    },
+    postcss: {
+      plugins: [focusVisible()]
     }
   },
 }
