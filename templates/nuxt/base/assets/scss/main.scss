@@ -2,7 +2,8 @@
 %>@import '~normalize.css';
 <% } else if (fixBrowserStyles === 'ress') {
 %>@import '~ress';
-<% } %>@import 'modules/fonts';
+<% } %>@import 'utils';
+@import 'modules/fonts';
 @import 'modules/typography';
 
 html,
