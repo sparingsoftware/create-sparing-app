@@ -16,8 +16,3 @@ body {
 *::before {
   box-sizing: border-box;
 }
-
-a,
-button {
-  @include focus-visible;
-}
