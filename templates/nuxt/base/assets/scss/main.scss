@@ -32,8 +32,3 @@ img.lazyload:not([src]) {
   opacity: 1;
   transition: opacity 0.35s ease-out;
 }
-
-a,
-button {
-  @include focus-visible;
-}

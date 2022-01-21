@@ -1,3 +1,7 @@
 .visually-hidden {
   @include visually-hidden;
 }
+
+.focus-visible {
+  @include focus-visible;
+}
