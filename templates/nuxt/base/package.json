@@ -26,6 +26,7 @@
     "postcss-focus-visible": "^6.0.3",
     "core-js": "^3.6.5",
     "focus-visible": "^5.2.0",
+    "lazysizes": "^5.3.2",
     "smoothscroll-polyfill": "^0.4.4",
     "@nuxtjs/style-resources": "^1.0.0"
   },

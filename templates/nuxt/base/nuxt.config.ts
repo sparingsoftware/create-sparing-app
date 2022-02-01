@@ -33,6 +33,10 @@ const config: NuxtConfig = {
     {
       src: '@/plugins/focus-visible',
       mode: 'client'
+    },
+    {
+      src: '@/plugins/lazysizes',
+      mode: 'client'
     }<%- plugins.length > 0 ? ',' : '' %>
     <%- plugins.map(plugin => plugin.mode ? `{
       src: '@/plugins/${plugin.name}',

@@ -2,7 +2,8 @@
 %>@import '~normalize.css';
 <% } else if (fixBrowserStyles === 'ress') {
 %>@import '~ress';
-<% } %>@import 'modules/fonts';
+<% } %>@import 'utils';
+@import 'modules/fonts';
 @import 'modules/typography';
 
 html,
@@ -15,4 +16,19 @@ body {
 *::after,
 *::before {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.lazyload,
+.lazyloading {
+  opacity: 0;
+}
+
+img.lazyload:not([src]) {
+  visibility: hidden;
+}
+
+.lazyloaded {
+  opacity: 1;
+  transition: opacity 0.35s ease-out;
 }
