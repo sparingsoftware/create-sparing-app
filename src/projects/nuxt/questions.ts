@@ -72,6 +72,12 @@ export const nuxtQuestion: DistinctQuestion[] = [
         value: {
           name: 'axios-i18-header'
         }
+      },
+      {
+        name: 'vue-conjunctions',
+        value: {
+          name: 'vue-conjunctions'
+        }
       }
     ] as PluginChoice[]
   }
