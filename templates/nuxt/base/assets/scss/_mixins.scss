@@ -1,1 +1,15 @@
 @import '~sass-utils-collection';
+
+@mixin focus-visible($color: white, $outline-offset: 4px) {
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 2px dashed $color;
+
+    @if $outline-offset {
+      outline-offset: $outline-offset;
+    }
+  }
+}
