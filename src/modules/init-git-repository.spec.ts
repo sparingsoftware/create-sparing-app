@@ -10,7 +10,7 @@ shell.cd = jest.fn()
 describe('init-git repository module', () => {
   const testProjectPath = '/project-path'
 
-  it('logs info about initalization', () => {
+  it('logs info about initialization', () => {
     initGitRepository(testProjectPath)
 
     expect(log.info).toBeCalled()
@@ -26,5 +26,11 @@ describe('init-git repository module', () => {
     initGitRepository(testProjectPath)
 
     expect(exec).toBeCalledWith('git init')
+  })
+
+  it('prepares git hooks', () => {
+    initGitRepository(testProjectPath)
+
+    expect(exec).toBeCalledWith('npm run prepare')
   })
 })
