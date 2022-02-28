@@ -1,9 +1,6 @@
 import { NuxtConfig } from '@nuxt/types'
-import dotenv from 'dotenv'
 // @ts-ignore
 import focusVisible from 'postcss-focus-visible'
-
-dotenv.config()
 
 const config: NuxtConfig = {
   // Server configuration
@@ -30,6 +27,9 @@ const config: NuxtConfig = {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
+    {
+      src: '@/plugins/http-service'
+    },
     {
       src: '@/plugins/focus-visible',
       mode: 'client'
@@ -60,13 +60,7 @@ const config: NuxtConfig = {
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
-  modules: [
-    // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv',
-
-    // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios'
-  ],
+  modules: [],
 
 
   styleResources: {
@@ -76,20 +70,14 @@ const config: NuxtConfig = {
       ]
   },
 
-  // Axios module configuration (https://go.nuxtjs.dev/config-axios)
-  axios: {},
-
   // https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-runtime-config
   publicRuntimeConfig: {
-    axios: {
-      browserBaseURL: process.env.BROWSER_BASE_URL || process.env.BASE_URL
-    }
+    browserBaseURL: process.env.BROWSER_BASE_URL || process.env.BASE_URL
   },
 
   privateRuntimeConfig: {
-    axios: {
-      baseURL: process.env.BASE_URL
-    }
+    baseURL: process.env.BASE_URL,
+    baseHost: process.env.BASE_HOST
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)

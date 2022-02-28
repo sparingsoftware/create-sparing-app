@@ -17,8 +17,6 @@
   "author": "Panowie Programiści",
   "dependencies": {
     "@nuxt/typescript-runtime": "^2.0.0",
-    "@nuxtjs/axios": "^5.9.5",
-    "@nuxtjs/dotenv": "^1.4.1",
     "@nuxtjs/google-gtag": "^1.0.4",
     "@nuxtjs/robots": "^2.5.0",
     "@nuxtjs/sitemap": "^2.4.0",
