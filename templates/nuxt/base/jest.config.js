@@ -8,8 +8,22 @@ const esModules = ['@nuxtjs', 'nuxt-i18n'].join('|')
 module.exports = merge(
   {
     setupFilesAfterEnv:  ['<rootDir>/tests/domSetup.ts'],
-    collectCoverage: false,
-    testEnvironment:'jsdom',
+    collectCoverage: true,
+    coverageReporters: ['lcov'],
+    coverageDirectory: '.',
+    coveragePathIgnorePatterns: [
+      '<rootDir>/.nuxt/components',
+      '<rootDir>/tests'
+    ],
+    coverageThreshold: {
+      '*/**': {
+        branches: 70,
+        functions: 70,
+        lines: 70,
+        statements: 70
+      }
+    },
+    testEnvironment: 'jsdom',
     moduleFileExtensions: ['ts', 'js', 'vue', 'json'],
     watchPathIgnorePatterns: ['node_modules'],
     transformIgnorePatterns: [`/node_modules/(?!${esModules})`],

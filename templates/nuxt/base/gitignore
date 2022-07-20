@@ -91,3 +91,7 @@ sw.*
 
 # auto-generate http service
 service/__generated-api.ts
+
+# Jest coverage report files
+lcov-report/
+lcov.info
